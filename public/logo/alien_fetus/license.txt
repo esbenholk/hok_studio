@@ -1,0 +1,11 @@
+Model Information:
+* title:	Alien Fetus
+* source:	https://sketchfab.com/3d-models/alien-fetus-adfb96fa526e4036b92006af2e9c7860
+* author:	resistance-studios (https://sketchfab.com/resistance-studios)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Alien Fetus" (https://sketchfab.com/3d-models/alien-fetus-adfb96fa526e4036b92006af2e9c7860) by resistance-studios (https://sketchfab.com/resistance-studios) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
