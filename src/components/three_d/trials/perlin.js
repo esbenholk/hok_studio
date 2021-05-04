@@ -1,12 +1,24 @@
-import React, { useRef, Suspense, useMemo } from 'react'
-import { Canvas, useFrame, useLoader, createPortal, useThree } from 'react-three-fiber'
-import { OrbitControls, Box, PerspectiveCamera, TorusKnot, CubeCamera, MeshDistortMaterial, Sphere  } from '@react-three/drei'
+import React, { useRef, Suspense, useMemo } from "react";
+import {
+  Canvas,
+  useFrame,
+  useLoader,
+  createPortal,
+  useThree,
+} from "react-three-fiber";
+import {
+  OrbitControls,
+  Box,
+  PerspectiveCamera,
+  TorusKnot,
+  CubeCamera,
+  MeshDistortMaterial,
+  Sphere,
+} from "@react-three/drei";
 
-import DataCanvas from '../materials/data_code'
-import { TextureLoader } from 'three/src/loaders/TextureLoader'
-import * as THREE from 'three'
-
-
+import DataCanvas from "../materials/matrix-data_canvas";
+import { TextureLoader } from "three/src/loaders/TextureLoader";
+import * as THREE from "three";
 
 const fragmentShader = `
 varying float qnoise;
@@ -28,7 +40,7 @@ void main() {
     b = abs(qnoise);
   }
   gl_FragColor = vec4(r, g, b, 1.0);
-}`
+}`;
 const vertexShader = `
 //
 // GLSL textureless classic 3D noise "cnoise",
@@ -252,42 +264,42 @@ void main() {
   //gl_ClipDistance[0];
 
 }
-`
+`;
 
 const uniforms = {
   time: {
-    type: 'f',
-    value: 0.1
+    type: "f",
+    value: 0.1,
   },
   pointscale: {
-    type: 'f',
-    value: 20.0
+    type: "f",
+    value: 20.0,
   },
   decay: {
-    type: 'f',
-    value: 0.01
+    type: "f",
+    value: 0.01,
   },
   complex: {
-    type: 'f',
-    value: 0.3
+    type: "f",
+    value: 0.3,
   },
   waves: {
-    type: 'f',
-    value: 10.0
+    type: "f",
+    value: 10.0,
   },
   eqcolor: {
-    type: 'f',
-    value: 10.0
+    type: "f",
+    value: 10.0,
   },
   fragment: {
-    type: 'i',
-    value: true
+    type: "i",
+    value: true,
   },
   redhell: {
-    type: 'i',
-    value: true
-  }
-}
+    type: "i",
+    value: true,
+  },
+};
 
 const options = {
   perlin: {
@@ -299,26 +311,31 @@ const options = {
     waves: 20.0,
     eqcolor: 11.0,
     fragment: true,
-    redhell: true
+    redhell: true,
   },
   spin: {
     sinVel: 0.0,
-    ampVel: 80.0
-  }
-}
+    ampVel: 80.0,
+  },
+};
 
-const start = Date.now()
+const start = Date.now();
 
 function PerlinTexture(props) {
-  const meshRef = useRef()
-  const matRef = useRef()
+  const meshRef = useRef();
+  const matRef = useRef();
 
   useFrame(() => {
-    const performance = Date.now() * 0.003
-    meshRef.current.rotation.y += options.perlin.vel
-    meshRef.current.rotation.x = (Math.sin(performance * options.spin.sinVel) * options.spin.ampVel * Math.PI) / 180
-    matRef.current.uniforms['time'].value = options.perlin.speed * (Date.now() - start)
-  })
+    const performance = Date.now() * 0.003;
+    meshRef.current.rotation.y += options.perlin.vel;
+    meshRef.current.rotation.x =
+      (Math.sin(performance * options.spin.sinVel) *
+        options.spin.ampVel *
+        Math.PI) /
+      180;
+    matRef.current.uniforms["time"].value =
+      options.perlin.speed * (Date.now() - start);
+  });
 
   return (
     <mesh {...props} ref={meshRef} wireframe={false} scale={[1, 1, 1]}>
@@ -334,140 +351,103 @@ function PerlinTexture(props) {
         />
       </points>
     </mesh>
-  )
+  );
 }
-
-
-
 
 const HTMLCanvasMaterial = () => {
-    const { gl } = useThree()
+  const { gl } = useThree();
 
-    const canvas_texture_ref = useRef();
+  const canvas_texture_ref = useRef();
 
+  let canvas = document.getElementById("dataCanvas"),
+    ctx,
+    texture;
 
-    let canvas = document.getElementById('dataCanvas'), ctx, texture;
+  ctx = canvas.getContext("2d");
+  texture = new THREE.CanvasTexture(ctx.canvas);
+  texture.anisotropy = gl.capabilities.getMaxAnisotropy();
+  texture.needsUpdate = true;
 
-
-    ctx = canvas.getContext("2d")
-    texture = new THREE.CanvasTexture(ctx.canvas);
-    texture.anisotropy = gl.capabilities.getMaxAnisotropy();
+  useFrame(() => {
     texture.needsUpdate = true;
+  });
 
- 
-    useFrame(() => {
-        texture.needsUpdate = true
-      })
-     
-
-    return ( 
-    
+  return (
     <MeshDistortMaterial
-                ref={canvas_texture_ref}
-                color="#FFFFFF"
-                attach="material"
-                distort={0} // Strength, 0 disables the effect (default=1)
-                speed={1} // Speed (default=1)
-                roughness={9}
-                reflectivity= {0.9}
-                refractionRatio={0.1}
-                transparent= {true}
-                map = {texture}
-                shininess= {1000}
-                
-            >
-
-            <canvasTexture attach="map" image={ canvas} />
-
-     </MeshDistortMaterial>)
-}
-
-
-
-
-
-
+      ref={canvas_texture_ref}
+      color="#FFFFFF"
+      attach="material"
+      distort={0} // Strength, 0 disables the effect (default=1)
+      speed={1} // Speed (default=1)
+      roughness={9}
+      reflectivity={0.9}
+      refractionRatio={0.1}
+      transparent={true}
+      map={texture}
+      shininess={1000}
+    >
+      <canvasTexture attach="map" image={canvas} />
+    </MeshDistortMaterial>
+  );
+};
 
 function R3FCanvasWDataAnimation() {
+  const image_texture = useLoader(TextureLoader, "tinyvr3.jpg");
 
-    const image_texture = useLoader(TextureLoader, "tinyvr3.jpg");
+  return (
+    <>
+      <DataCanvas />
 
-
-
-    return (
-      <>
-        <DataCanvas />
-       
-        <Canvas
-          colorManagement={true}
-          style={{ backgroundColor:'black', position: 'relative', top: '0', left: '0' }}
-          camera={{ fov: 50, position: [0, 0, 40] }}
-          alpha={true}
-    
-        >
-
-       
+      <Canvas
+        colorManagement={true}
+        style={{
+          backgroundColor: "black",
+          position: "relative",
+          top: "0",
+          left: "0",
+        }}
+        camera={{ fov: 50, position: [0, 0, 40] }}
+        alpha={true}
+      >
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1} />
         <pointLight position={[0, -10, 5]} intensity={1} />
-        
+
         <PerlinTexture />
 
         <OrbitControls
-            enableDamping
-            enableZoom={true}
-            enablePan={false}
-            dampingFactor={0.05}
-            rotateSpeed={1.1}
-            minPolarAngle={Math.PI / 3.5}
-            maxPolarAngle={Math.PI / 1.5}
-            />
-
-
+          enableDamping
+          enableZoom={true}
+          enablePan={false}
+          dampingFactor={0.05}
+          rotateSpeed={1.1}
+          minPolarAngle={Math.PI / 3.5}
+          maxPolarAngle={Math.PI / 1.5}
+        />
 
         <Suspense fallback={null}>
-            <Sphere visible position={[0, 0, 0]} args={[1, 16, 200]}>
+          <Sphere visible position={[0, 0, 0]} args={[1, 16, 200]}>
+            <HTMLCanvasMaterial />
+          </Sphere>
+        </Suspense>
 
-       
+        <CubeCamera
+          resolution={256} // Size of the off-buffer (256 by default)
+          frames={Infinity} // How many frames it should render (Indefinitively by default)
+          // fog={customFog} // Allows you to pass a Fog or FogExp2 instance for a smaller frustrum
+          near={1}
+          far={1000}
+        >
+          {(texture) => (
+            <mesh>
+              <sphereGeometry />
+              <meshStandardMaterial envMap={texture} />
+            </mesh>
+          )}
+        </CubeCamera>
+      </Canvas>
+    </>
+  );
+}
 
-            <HTMLCanvasMaterial/>
-
-          
-
-
-
-            </Sphere>
-
-          </Suspense>
-
-          <CubeCamera
-                resolution={256} // Size of the off-buffer (256 by default)
-                frames={Infinity} // How many frames it should render (Indefinitively by default)
-                // fog={customFog} // Allows you to pass a Fog or FogExp2 instance for a smaller frustrum
-                near={1}
-                far={1000}
-                >
-                {(texture) => (
-                    <mesh>
-                    <sphereGeometry />
-                    <meshStandardMaterial envMap={texture} />
-                    </mesh>
-                )}
-         </CubeCamera>
-
-
-        
-         
-
-      
-     
-        </Canvas>
-
-       
-       
-      </>
-    )
-  }
-  
-  export default R3FCanvasWDataAnimation
-  
+export default R3FCanvasWDataAnimation;

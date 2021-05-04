@@ -112,6 +112,7 @@ const Model = ({ envMap }) => {
     let model = gltf.scene;
     model.scale.set(50, 50, 50);
     model.traverse((children) => {
+      console.log(model);
       if (children instanceof THREE.Mesh) {
         // maps mirrorMaterial onto all meshes in obj file.
         children.castShadow = true;

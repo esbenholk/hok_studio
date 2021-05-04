@@ -5,10 +5,10 @@ import SinglePost from "./components/SinglePost.js";
 import Posts from "./components/Posts.js";
 import NavBar from "./components/NavBar.js";
 import { NavLink } from "react-router-dom";
+import Audio from "./components/Audio.js";
+import Worldbuilder from "./components/Worldbuilder";
 
 import "./App.css";
-
-import R3FCanvasWDataAnimation from "./components/three_d/trials/perlin";
 
 function App() {
   return (
@@ -28,10 +28,25 @@ function App() {
             </div>
 
             <Switch>
-              <Route component={Home} path="/" exact />
-              <Route component={About} path="/about" />
-              <Route component={SinglePost} path="/projects/:slug" />
-              <Route component={Posts} path="/projects" />
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/about">
+                <About />
+              </Route>
+
+              <Route path="/projects/:slug">
+                <SinglePost />
+              </Route>
+              <Route path="/projects">
+                <Posts />
+              </Route>
+              <Route path="/audio-visualiser">
+                <Audio />
+              </Route>
+              <Route path="/worldbuilder">
+                <Worldbuilder />
+              </Route>
             </Switch>
           </div>
         </BrowserRouter>

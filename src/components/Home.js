@@ -1,6 +1,6 @@
 import React from "react";
 import { Suspense } from "react";
-import Play4UsNowCanvas from "./three_d/play4usnow/play4usnow";
+import Play4UsNowCanvas from "./three_d/play4usnow";
 
 export default function Home() {
   return (
