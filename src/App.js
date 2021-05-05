@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavBar from "./components/NavBar.js";
 
 import Home from "./components/Home.js";
+import "./App.css";
 // import About from "./components/About.js";
 // import SinglePost from "./components/SinglePost.js";
 // import Posts from "./components/Posts.js";
@@ -33,7 +34,6 @@ import Home from "./components/Home.js";
 <Skeleton />
 </Route> */
 }
-import "./App.css";
 
 function App() {
   return (
