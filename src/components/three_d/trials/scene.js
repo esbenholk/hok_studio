@@ -23,7 +23,7 @@ const ImageMaterial = ({ url, side }) => {
 
       imageRef.current = url;
     }
-  }, [url]);
+  }, [url, current]);
 
   let image_texture = useLoader(TextureLoader, url);
 

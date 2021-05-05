@@ -76,7 +76,7 @@ export const Control = (props) => {
         setActive(true);
       }
     });
-  }, []);
+  }, [active]);
 
   return (
     <>

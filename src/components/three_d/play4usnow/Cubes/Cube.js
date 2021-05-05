@@ -1,24 +1,15 @@
-import React, {
-  useMemo,
-  useRef,
-  useState,
-  useEffect,
-  useCallback,
-} from "react";
+import React, { useMemo, useRef } from "react";
 import { random } from "lodash";
 import { useFrame } from "react-three-fiber";
 
 import { MeshDistortMaterial, Sphere } from "@react-three/drei";
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default ({ video }) => {
+export default () => {
   const mesh = useRef();
   const time = useRef(0);
 
-  const [isHovered, setIsHovered] = useState(false);
-  const [isActive, setIsActive] = useState(false);
-
-  const isActiveRef = useRef(isActive);
+  const isActiveRef = useRef(true);
 
   // position
   const position = useMemo(() => {
@@ -32,11 +23,6 @@ export default ({ video }) => {
   // random time mod factor
   const timeMod = useMemo(() => random(0.1, 4, true), []);
 
-  //useEffect of the activeState
-  useEffect(() => {
-    isActiveRef.current = isActive;
-  }, [isActive]);
-
   // raf loop
   useFrame(() => {
     mesh.current.rotation.y += 0.01 * timeMod;
@@ -46,31 +32,8 @@ export default ({ video }) => {
     }
   });
 
-  // Events
-  const onHover = useCallback(
-    (e, value) => {
-      e.stopPropagation();
-      setIsHovered(value);
-    },
-    [setIsHovered]
-  );
-
-  const onClick = useCallback(
-    (e) => {
-      e.stopPropagation();
-      setIsActive((v) => !v);
-    },
-    [setIsActive]
-  );
-
   return (
-    <mesh
-      ref={mesh}
-      position={position}
-      onClick={(e) => onClick(e)}
-      onPointerOver={(e) => onHover(e, true)}
-      onPointerOut={(e) => onHover(e, false)}
-    >
+    <mesh ref={mesh} position={position}>
       <Sphere visible args={[0.9, 16, 200]}>
         <MeshDistortMaterial
           color="#FFFFFF"
