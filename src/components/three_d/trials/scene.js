@@ -50,26 +50,26 @@ const ImageMaterial = ({ url, side }) => {
   }
 };
 
+function createVideo(url) {
+  const vid = document.createElement("video");
+  vid.src = url;
+  vid.crossOrigin = "Anonymous";
+  vid.loop = true;
+  vid.muted = true;
+  vid.playsinline = true;
+  vid.play();
+  return vid;
+}
+
 function VideoMaterial({ url, side }) {
   const videoRef = useRef(url);
 
-  const [video, setVideo] = useState(createVideo);
+  const [video, setVideo] = useState(createVideo(url));
   const [current, setCurrent] = useState(true);
-
-  function createVideo() {
-    const vid = document.createElement("video");
-    vid.src = url;
-    vid.crossOrigin = "Anonymous";
-    vid.loop = true;
-    vid.muted = true;
-    vid.playsinline = true;
-    vid.play();
-    return vid;
-  }
 
   useEffect(() => {
     if (videoRef.current !== url && videoRef.current) {
-      setVideo(createVideo());
+      setVideo(createVideo(url));
       if (current) {
         setCurrent(false);
       } else {
@@ -78,7 +78,7 @@ function VideoMaterial({ url, side }) {
 
       videoRef.current = url;
     }
-  }, [url]);
+  }, [url, current]);
 
   return (
     <meshBasicMaterial depthTest={false} side={side} opacity={1}>
