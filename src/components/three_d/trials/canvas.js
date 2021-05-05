@@ -7,7 +7,14 @@ function R3FCanvas({}) {
   return (
     <>
       <Canvas
-        style={{ height: window.innerHeight, zIndex: "-1" }}
+        style={{
+          zIndex: "0",
+          width: "100%",
+          position: "fixed",
+          top: "0",
+          left: "0",
+          background: "radial-gradient(purple, black, grey)",
+        }}
         camera={{ fov: 50, position: [0, 0, 40] }}
         colorManagement={false}
         alpha={true}

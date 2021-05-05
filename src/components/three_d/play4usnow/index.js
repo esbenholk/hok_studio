@@ -18,10 +18,12 @@ function Play4UsNowCanvas() {
         gl={{ powerPreference: "high-performance" }}
         camera={{ position: [0, 0, 70], near: 0.1, far: 500 }}
         style={{
-          height: window.innerHeight,
-          zIndex: "-1",
-          width: window.innerWidth,
+          zIndex: "0",
+          width: "100%",
           position: "fixed",
+          top: "0",
+          left: "0",
+          background: "radial-gradient(purple, black, grey)",
         }}
       >
         <fog attach="fog" args={["red", 40, 100]} />

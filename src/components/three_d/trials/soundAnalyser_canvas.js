@@ -5,7 +5,6 @@ import { PositionalAudio, OrbitControls } from "@react-three/drei";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
-import { MeshDistortMaterial } from "@react-three/drei";
 
 extend({ EffectComposer, RenderPass, UnrealBloomPass });
 
@@ -16,7 +15,6 @@ function Analyzer({ sound }) {
   const ref = useRef();
   const sphereRef = useRef();
   const analyser = useRef();
-  console.log("active sound", sound);
 
   useEffect(
     () => void (analyser.current = new THREE.AudioAnalyser(sound.current, 32))

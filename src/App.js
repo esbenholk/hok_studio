@@ -4,53 +4,49 @@ import About from "./components/About.js";
 import SinglePost from "./components/SinglePost.js";
 import Posts from "./components/Posts.js";
 import NavBar from "./components/NavBar.js";
-import { NavLink } from "react-router-dom";
 import Audio from "./components/Audio.js";
 import Worldbuilder from "./components/Worldbuilder";
+import Skeleton from "./components/Skeleton";
+import Projects from "./components/Projects";
 
 import "./App.css";
 
 function App() {
   return (
     <>
-      <div></div>
-      <div className="main-container">
-        <BrowserRouter>
-          <div>
-            <NavBar></NavBar>
-          </div>
-
-          <div className="content-container">
-            <div className="flex-row fixed">
-              <NavLink className="standard-button" to="/">
-                Esben Holk @ HOUSE OF KILLING
-              </NavLink>
-            </div>
-
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route path="/about">
-                <About />
-              </Route>
-
-              <Route path="/projects/:slug">
-                <SinglePost />
-              </Route>
-              <Route path="/projects">
-                <Posts />
-              </Route>
-              <Route path="/audio-visualiser">
-                <Audio />
-              </Route>
-              <Route path="/worldbuilder">
-                <Worldbuilder />
-              </Route>
-            </Switch>
-          </div>
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <header className="flex-row">
+          <NavBar />
+        </header>
+        <main className="main-container">
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/projects/:slug">
+              <SinglePost />
+            </Route>
+            <Route path="/posts">
+              <Posts />
+            </Route>
+            <Route path="/projects">
+              <Projects />
+            </Route>
+            <Route path="/audio-visualiser">
+              <Audio />
+            </Route>
+            <Route path="/worldbuilder">
+              <Worldbuilder />
+            </Route>
+            <Route path="/skeleton">
+              <Skeleton />
+            </Route>
+          </Switch>
+        </main>
+      </BrowserRouter>
     </>
   );
 }

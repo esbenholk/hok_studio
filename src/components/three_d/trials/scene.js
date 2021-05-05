@@ -1,8 +1,6 @@
-import { a, useSpring } from "@react-spring/three";
 import { Box, Sphere } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-import { useDrag } from "react-use-gesture";
 import { useFrame, useThree, useLoader } from "react-three-fiber";
 import { useRef, useEffect, useState, useMemo } from "react";
 import * as THREE from "three";
@@ -112,7 +110,6 @@ const Model = ({ envMap }) => {
     let model = gltf.scene;
     model.scale.set(50, 50, 50);
     model.traverse((children) => {
-      console.log(model);
       if (children instanceof THREE.Mesh) {
         // maps mirrorMaterial onto all meshes in obj file.
         children.castShadow = true;

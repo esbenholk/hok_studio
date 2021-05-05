@@ -1,23 +1,15 @@
-import React, {
-  forwardRef,
-  Suspense,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-} from "react";
-import { Canvas, useFrame, useLoader, useThree } from "react-three-fiber";
+import React, { forwardRef, Suspense, useMemo, useRef } from "react";
+import { Canvas, useFrame } from "react-three-fiber";
 import {
   OrbitControls,
   Environment,
   useGLTF,
   CurveModifier,
-  MeshDistortMaterial,
 } from "@react-three/drei";
 import { TorusKnotHelper } from "./Util";
 
 import * as THREE from "three";
 
-import { TextureLoader } from "three/src/loaders/TextureLoader.js";
 import useRenderTarget from "../functions/use-render-target";
 
 export default function InfiniteModel() {
@@ -32,10 +24,11 @@ export default function InfiniteModel() {
         far: 500,
       }}
       style={{
-        height: window.innerHeight,
-        zIndex: "-1",
-        width: window.innerWidth,
+        zIndex: "0",
+        width: "100%",
         position: "fixed",
+        top: "0",
+        left: "0",
         background: "radial-gradient(purple, black, grey)",
       }}
     >
@@ -51,15 +44,14 @@ function Scene() {
     <Suspense fallback={null}>
       <OrbitControls autoRotateSpeed={(-60 * 0.15) / 2} />
 
-      <PerspectiveGrid />
-
       <cubeCamera
-        layers={[]}
         name="cubeCamera"
         ref={cubeCamera}
         args={[0.1, 100000, renderTarget]}
         position={[0, 0, 0]}
       />
+
+      <PerspectiveGrid />
       <Environment preset="warehouse" />
 
       <CurvyModel p={3} q={4} speed={0.05} envMap={renderTarget.texture} />
@@ -91,7 +83,9 @@ function CurvyModel({
     <>
       <group {...props} position={[0, 10, 0]} rotation={[0, 0, 0]}>
         <CurveModifier ref={flowRef} curve={curve}>
-          <Model envMap={envMap} />
+          <mesh scale={[10, 10, 10]} rotation={[0, 0, Math.PI / 2]}>
+            <Model envMap={envMap} />
+          </mesh>
         </CurveModifier>
       </group>
     </>
@@ -102,12 +96,9 @@ function CurvyModel({
 const Model = forwardRef((props, ref) => {
   const gltf = useGLTF("logo/scene.gltf");
 
-  console.log(props.envMap);
-
   const mirrorMaterial = new THREE.MeshPhongMaterial({
     opacity: 0.999,
     envMap: props.envMap,
-    metalness: 0.9,
     reflectivity: 0.9,
     refractionRatio: 0.1,
     transparent: true,
@@ -116,9 +107,7 @@ const Model = forwardRef((props, ref) => {
 
   if (gltf) {
     let model = gltf.scene;
-    // model.scale.set(50, 50, 50);
     model.traverse((children) => {
-      console.log(model);
       if (children instanceof THREE.Mesh) {
         // maps mirrorMaterial onto all meshes in obj file.
         children.castShadow = true;
@@ -129,16 +118,6 @@ const Model = forwardRef((props, ref) => {
     });
   }
 
-  useLayoutEffect(() => {
-    let model = gltf.scene;
-    model.scale.set(10, 10, 10);
-    model.rotateZ(Math.PI / 2);
-    model.rotateY(Math.PI / 2);
-  }, [gltf.scene]);
-
-  console.log(gltf);
-
-  // return <mesh ref={ref} args={[geometry, material]}{...props} />;
   return gltf ? <primitive ref={ref} object={gltf.scene} /> : null;
 });
 

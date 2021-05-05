@@ -63,7 +63,6 @@ export default class Visualizer extends React.Component {
   };
 
   componentWillUnmount() {
-    console.log("unmounting");
     this.stopAudio();
   }
   visualizerIntializer = (visualizer, audioContext, canvas, width, height) => {
@@ -147,9 +146,15 @@ export default class Visualizer extends React.Component {
   render() {
     return (
       <div>
-        <div style={{ position: "absolute", top: "0", right: "0" }}>
-          <button onClick={this.playAudio}>Play Audio</button>
-          <button onClick={this.stopAudio}>Stop Audio</button>
+        <div
+          style={{ position: "fixed", zIndex: "2", bottom: "0", right: "0" }}
+        >
+          <button className="standard-button" onClick={this.playAudio}>
+            Play Audio
+          </button>
+          <button className="standard-button" onClick={this.stopAudio}>
+            Stop Audio
+          </button>
         </div>
         <canvas
           id="dataCanvas"

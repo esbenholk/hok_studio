@@ -1,42 +1,85 @@
-import React, { Suspense, useRef } from "react";
+import React from "react";
 import { Canvas } from "react-three-fiber";
-import { Vector3 } from "three";
-import { Sky } from "@react-three/drei";
 import { Physics } from "@react-three/cannon";
-import { Camera } from "./camera";
-import { Ground } from "./ground";
-import { Player } from "./player";
-// import { useCubeStore, Cube } from "./Cube";
+import { nanoid } from "nanoid";
 
-// {cubes.map((cube) => cube)}
-// <Cube />
+import { Ground } from "./components/Ground";
+import { Cube } from "./components/Cube";
+import { Control } from "./components/Player";
+// import { Hud } from "./components/Hud";
+
+/* <Hud position={[0, 0, -2]} /> */
+
+import { useStore } from "./hooks/useStore";
+import { useInterval } from "./hooks/useInterval";
 
 function MinecraftWorldbuilder() {
-  //   const cubes = useCubeStore((state) => state.cubes);
+  const [cubes, saveWorld] = useStore((state) => [
+    state.cubes,
+    state.saveWorld,
+  ]);
+
+  useInterval(
+    () => {
+      saveWorld(cubes);
+    },
+    // every 60 seconds
+    60000
+  );
+
   return (
     <>
+      <div
+        style={{
+          position: "fixed",
+          top: "0",
+          left: "0",
+          zIndex: "-1",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            position: "relative",
+            width: "5px",
+            height: "5px",
+            backgroundColor: "black",
+            zIndex: "9999999",
+          }}
+        ></div>
+      </div>
       <Canvas
         shadowMap
         sRGB
-        gl={{ powerPreference: "high-performance", alpha: false }}
-        camera={{ position: [0, 0, 0], near: 0.1, far: 500 }}
         style={{
-          height: window.innerHeight,
-          position: "fixed",
+          zIndex: "0",
           width: "100%",
-          zIndex: "-1",
+          position: "fixed",
+          top: "0",
+          left: "0",
         }}
+        id="canvas"
+        onCreated={({ camera }) => camera.lookAt(0, 0, 0)}
+        camera={{ position: [50, 5, 50], near: 0.1, far: 500 }}
       >
-        <Camera fov={50} />
-        <Sky sunPosition={new Vector3(100, 10, 100)} />
-        <ambientLight intensity={0.3} />
+        <color attach="background" args={["yellow"]} />
+        <fog attach="fog" args={["red", 0, 100]} />
+        <ambientLight intensity={0.25} />
+        <pointLight castShadow intensity={0.7} position={[100, 100, 100]} />
+        <pointLight position={[-10, -10, -10]} />
+        <pointLight intensity={0.2} position={[0, 0, 50]} />
+        <Physics gravity={[0, -30, 0]}>
+          <Ground position={[0, 0.5, 0]} />
 
-        <pointLight castShadow position={[10, 10, 10]} />
-        <pointLight castShadow intensity={0.2} position={[0, 0, 50]} />
+          <Control />
 
-        <Physics>
-          <Ground />
-          <Player />
+          {cubes.map((cube) => (
+            <Cube key={nanoid()} texture={cube.texture} position={cube.pos} />
+          ))}
         </Physics>
       </Canvas>
     </>

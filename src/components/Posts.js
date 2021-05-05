@@ -1,14 +1,39 @@
-import React from "react";
-import { Suspense } from "react";
+import React, { useState, useEffect } from "react";
 
-import InfiniteModel from "./three_d/infinite_model";
+import sanityClient from "../client";
 
 export default function Posts() {
+  const [projectData, setProjectData] = useState(null);
+
+  useEffect(() => {
+    sanityClient
+      .fetch('*[_type == "post"]{title,slug,mainImage{asset->{_id,url}, alt}}')
+      .then((data) => setProjectData(data))
+      .catch(console.error);
+  });
+
   return (
     <div className="content-container">
-      <Suspense fallback={null}>
-        <InfiniteModel />
-      </Suspense>
+      <div>
+        <section>
+          <div>
+            {projectData &&
+              projectData.map((post, index) => (
+                <article key={index}>
+                  <span key={index}>
+                    <img
+                      src={post.mainImage.asset.url}
+                      alt={post.mainImage.alt}
+                    />
+                    <span>
+                      <h3>{post.title}</h3>
+                    </span>
+                  </span>
+                </article>
+              ))}
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

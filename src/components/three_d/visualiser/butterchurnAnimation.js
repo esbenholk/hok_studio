@@ -1,12 +1,9 @@
 import * as THREE from "three";
-import React, { useMemo, useEffect, useState, useRef, Suspense } from "react";
-import { createPortal, useFrame, useThree, extend } from "react-three-fiber";
+import React, { useRef } from "react";
+import { useFrame, useThree, extend } from "react-three-fiber";
 import { EffectComposer, RenderPass } from "postprocessing";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
-import { TorusKnot, MeshDistortMaterial, Sphere } from "@react-three/drei";
-
-import { DistortTorusMaterial } from "../materials/DistortTorusMaterial";
-import useRenderTarget from "../functions/use-render-target";
+import { MeshDistortMaterial } from "@react-three/drei";
 
 extend({ EffectComposer, RenderPass, UnrealBloomPass });
 

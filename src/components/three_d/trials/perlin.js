@@ -1,16 +1,7 @@
-import React, { useRef, Suspense, useMemo } from "react";
-import {
-  Canvas,
-  useFrame,
-  useLoader,
-  createPortal,
-  useThree,
-} from "react-three-fiber";
+import React, { useRef, Suspense } from "react";
+import { Canvas, useFrame, useLoader, useThree } from "react-three-fiber";
 import {
   OrbitControls,
-  Box,
-  PerspectiveCamera,
-  TorusKnot,
   CubeCamera,
   MeshDistortMaterial,
   Sphere,
@@ -392,7 +383,7 @@ const HTMLCanvasMaterial = () => {
 };
 
 function R3FCanvasWDataAnimation() {
-  const image_texture = useLoader(TextureLoader, "tinyvr3.jpg");
+  // const image_texture = useLoader(TextureLoader, "tinyvr3.jpg");
 
   return (
     <>

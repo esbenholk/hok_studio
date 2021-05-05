@@ -18,10 +18,12 @@ function AudioVisualiser() {
           gl={{ powerPreference: "high-performance" }}
           camera={{ position: [0, 0, 150], near: 0.1, far: 500 }}
           style={{
-            height: window.innerHeight,
-            zIndex: "-1",
-            width: window.innerWidth,
+            zIndex: "0",
+            width: "100%",
             position: "fixed",
+            top: "0",
+            left: "0",
+            background: "radial-gradient(purple, black, grey)",
           }}
         >
           <pointLight position={[-10, -10, -10]} />
