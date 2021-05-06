@@ -3,7 +3,7 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 import * as THREE from "three";
 import React, { useRef, useEffect, useMemo } from "react";
-import { useFrame, extend, useThree } from "react-three-fiber";
+import { useFrame, extend, useThree } from "@react-three/fiber";
 extend({ EffectComposer, RenderPass, UnrealBloomPass });
 
 export default function Bloom({ children }) {

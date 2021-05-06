@@ -1,7 +1,7 @@
 import { Box, Sphere } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-import { useFrame, useThree, useLoader } from "react-three-fiber";
+import { useFrame, useThree, useLoader } from "@react-three/fiber";
 import { useRef, useEffect, useState, useMemo } from "react";
 import * as THREE from "three";
 import { TextureLoader } from "three/src/loaders/TextureLoader.js";

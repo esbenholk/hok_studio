@@ -1,5 +1,5 @@
 import React, { useRef, Suspense } from "react";
-import { Canvas, useFrame, useThree } from "react-three-fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, CubeCamera, Sphere } from "@react-three/drei";
 
 import DataCanvas from "../materials/matrix-data_canvas";

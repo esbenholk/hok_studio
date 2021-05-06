@@ -1,6 +1,6 @@
 import React, { useMemo, useRef } from "react";
 import { random } from "lodash";
-import { useFrame } from "react-three-fiber";
+import { useFrame } from "@react-three/fiber";
 
 import { Sphere } from "@react-three/drei";
 

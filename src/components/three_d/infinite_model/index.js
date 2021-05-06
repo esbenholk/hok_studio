@@ -1,11 +1,6 @@
-import React, { forwardRef, Suspense, useMemo, useRef } from "react";
-import { Canvas, useFrame } from "react-three-fiber";
-import {
-  OrbitControls,
-  Environment,
-  useGLTF,
-  CurveModifier,
-} from "@react-three/drei";
+import React, { forwardRef, Suspense, useEffect, useMemo, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, useGLTF, CurveModifier } from "@react-three/drei";
 import { TorusKnotHelper } from "./Util";
 
 import * as THREE from "three";
@@ -52,7 +47,6 @@ function Scene() {
       />
 
       <PerspectiveGrid />
-      <Environment preset="warehouse" />
 
       <CurvyModel p={3} q={4} speed={0.05} envMap={renderTarget.texture} />
 
@@ -95,28 +89,30 @@ function CurvyModel({
 // CurveModifier needs to pass a ref, so we forwardRef
 const Model = forwardRef((props, ref) => {
   const gltf = useGLTF("logo/scene.gltf");
+  const envMap = props.envMap;
 
-  const mirrorMaterial = new THREE.MeshPhongMaterial({
-    opacity: 0.999,
-    envMap: props.envMap,
-    reflectivity: 0.9,
-    refractionRatio: 0.1,
-    transparent: true,
-    shininess: 1000,
-  });
-
-  if (gltf) {
-    let model = gltf.scene;
-    model.traverse((children) => {
-      if (children instanceof THREE.Mesh) {
-        // maps mirrorMaterial onto all meshes in obj file.
-        children.castShadow = true;
-        children.receiveShadow = true;
-        children.geometry.computeVertexNormals();
-        children.material = mirrorMaterial;
-      }
+  useEffect(() => {
+    const mirrorMaterial = new THREE.MeshPhongMaterial({
+      // opacity: 0.999,
+      envMap: envMap,
+      // reflectivity: 0.9,
+      // refractionRatio: 0.1,
+      // transparent: true,
+      // shininess: 1000,
     });
-  }
+    if (gltf) {
+      let model = gltf.scene;
+      model.traverse((children) => {
+        if (children instanceof THREE.Mesh) {
+          // maps mirrorMaterial onto all meshes in obj file.
+          children.castShadow = true;
+          children.receiveShadow = true;
+          children.geometry.computeVertexNormals();
+          children.material = mirrorMaterial;
+        }
+      });
+    }
+  }, [gltf, envMap]);
 
   return gltf ? <primitive ref={ref} object={gltf.scene} /> : null;
 });

@@ -1,5 +1,5 @@
 import React, { Suspense, useRef } from "react";
-import { Canvas } from "react-three-fiber";
+import { Canvas } from "@react-three/fiber";
 
 import Visualizer from "../materials/butterchurn_canvas";
 import AudioVisualiserScene from "./butterchurnAnimation.js";

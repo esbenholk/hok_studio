@@ -1,6 +1,6 @@
 import * as THREE from "three";
-import React, { Suspense, useRef, useEffect, useMemo, useState } from "react";
-import { Canvas, useFrame, extend, useThree } from "react-three-fiber";
+import React, { Suspense, useRef, useEffect, useMemo } from "react";
+import { Canvas, useFrame, extend, useThree } from "@react-three/fiber";
 import { PositionalAudio, OrbitControls } from "@react-three/drei";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
 import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass";

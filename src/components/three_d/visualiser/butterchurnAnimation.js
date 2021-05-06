@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import React, { useRef } from "react";
-import { useFrame, useThree, extend } from "react-three-fiber";
+import { useFrame, useThree, extend } from "@react-three/fiber";
 import { EffectComposer, RenderPass } from "postprocessing";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 

@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import React, { useMemo, useEffect, useState, useRef, Suspense } from "react";
-import { createPortal, useFrame, useThree, extend } from "react-three-fiber";
+import { createPortal, useFrame, useThree, extend } from "@react-three/fiber";
 import {
   EffectComposer,
   EffectPass,
