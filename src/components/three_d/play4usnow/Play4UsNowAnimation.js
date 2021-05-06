@@ -12,12 +12,7 @@ import {
 } from "postprocessing";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 
-import {
-  Text,
-  TorusKnot,
-  PositionalAudio,
-  MeshDistortMaterial,
-} from "@react-three/drei";
+import { Text, TorusKnot, PositionalAudio } from "@react-three/drei";
 
 import { DistortTorusMaterial } from "../materials/DistortTorusMaterial";
 import { Color } from "three";
@@ -53,7 +48,7 @@ const HTMLCanvasMaterial = () => {
   });
 
   return (
-    <MeshDistortMaterial
+    <meshStandardMaterial
       ref={canvas_texture_ref}
       color="#FFFFFF"
       attach="material"
@@ -69,7 +64,7 @@ const HTMLCanvasMaterial = () => {
       depthTest={true}
     >
       <canvasTexture attach="map" image={canvas} />
-    </MeshDistortMaterial>
+    </meshStandardMaterial>
   );
 };
 

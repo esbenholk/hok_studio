@@ -4,36 +4,13 @@ import NavBar from "./components/NavBar.js";
 
 import Home from "./components/Home.js";
 import "./App.css";
-// import About from "./components/About.js";
-// import SinglePost from "./components/SinglePost.js";
-// import Posts from "./components/Posts.js";
-// import Audio from "./components/Audio.js";
-// import Worldbuilder from "./components/Worldbuilder";
-// import Skeleton from "./components/Skeleton";
-// import Projects from "./components/Projects";
-{
-  /* <Route path="/about">
-<About />
-</Route>
-<Route path="/projects/:slug">
-<SinglePost />
-</Route>
-<Route path="/posts">
-<Posts />
-</Route>
-<Route path="/projects">
-<Projects />
-</Route>
-<Route path="/audio-visualiser">
-<Audio />
-</Route>
-<Route path="/worldbuilder">
-<Worldbuilder />
-</Route>
-<Route path="/skeleton">
-<Skeleton />
-</Route> */
-}
+import About from "./components/About.js";
+import SinglePost from "./components/SinglePost.js";
+import Posts from "./components/Posts.js";
+import Audio from "./components/Audio.js";
+import Worldbuilder from "./components/Worldbuilder";
+import Skeleton from "./components/Skeleton";
+import Projects from "./components/Projects";
 
 function App() {
   return (
@@ -48,6 +25,27 @@ function App() {
               <Home />
             </Route>
           </Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/projects/:slug">
+            <SinglePost />
+          </Route>
+          <Route path="/posts">
+            <Posts />
+          </Route>
+          <Route path="/projects">
+            <Projects />
+          </Route>
+          <Route path="/audio-visualiser">
+            <Audio />
+          </Route>
+          <Route path="/worldbuilder">
+            <Worldbuilder />
+          </Route>
+          <Route path="/skeleton">
+            <Skeleton />
+          </Route>
         </main>
       </BrowserRouter>
     </>

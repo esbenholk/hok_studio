@@ -3,7 +3,6 @@ import React, { useRef } from "react";
 import { useFrame, useThree, extend } from "react-three-fiber";
 import { EffectComposer, RenderPass } from "postprocessing";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
-import { MeshDistortMaterial } from "@react-three/drei";
 
 extend({ EffectComposer, RenderPass, UnrealBloomPass });
 
@@ -24,7 +23,7 @@ const HTMLCanvasMaterial = ({ canvas }) => {
   });
 
   return (
-    <MeshDistortMaterial
+    <meshStandardMaterial
       color="#FFFFFF"
       attach="material"
       distort={0} // Strength, 0 disables the effect (default=1)
