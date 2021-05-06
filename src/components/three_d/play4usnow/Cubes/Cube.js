@@ -35,7 +35,7 @@ export default () => {
   return (
     <mesh ref={mesh} position={position}>
       <Sphere visible args={[0.9, 16, 200]}>
-        <MeshDistortMaterial
+        <meshStandardMaterial
           color="#FFFFFF"
           attach="material"
           distort={0.7} // Strength, 0 disables the effect (default=1)

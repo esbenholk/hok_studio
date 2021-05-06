@@ -1,7 +1,6 @@
 /* eslint-disable no-lone-blocks */
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import NavBar from "./components/NavBar.js";
-
 import Home from "./components/Home.js";
 import "./App.css";
 import About from "./components/About.js";

@@ -1,14 +1,8 @@
 import React, { useRef, Suspense } from "react";
-import { Canvas, useFrame, useLoader, useThree } from "react-three-fiber";
-import {
-  OrbitControls,
-  CubeCamera,
-  MeshDistortMaterial,
-  Sphere,
-} from "@react-three/drei";
+import { Canvas, useFrame, useThree } from "react-three-fiber";
+import { OrbitControls, CubeCamera, Sphere } from "@react-three/drei";
 
 import DataCanvas from "../materials/matrix-data_canvas";
-import { TextureLoader } from "three/src/loaders/TextureLoader";
 import * as THREE from "three";
 
 const fragmentShader = `
@@ -364,7 +358,7 @@ const HTMLCanvasMaterial = () => {
   });
 
   return (
-    <MeshDistortMaterial
+    <meshStandardMaterial
       ref={canvas_texture_ref}
       color="#FFFFFF"
       attach="material"
@@ -378,7 +372,7 @@ const HTMLCanvasMaterial = () => {
       shininess={1000}
     >
       <canvasTexture attach="map" image={canvas} />
-    </MeshDistortMaterial>
+    </meshStandardMaterial>
   );
 };
 
