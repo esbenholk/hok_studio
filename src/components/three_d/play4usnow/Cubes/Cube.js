@@ -2,7 +2,7 @@ import React, { useMemo, useRef } from "react";
 import { random } from "lodash";
 import { useFrame } from "react-three-fiber";
 
-import { MeshDistortMaterial, Sphere } from "@react-three/drei";
+import { Sphere } from "@react-three/drei";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default () => {
