@@ -10,9 +10,7 @@ export default function ContentRedistribution() {
 
   const loadImages = async () => {
     try {
-      const res = await fetch(
-        "https://hok-studio-backend.herokuapp.com/api/getallimages"
-      );
+      const res = await fetch("/api/getallimages");
       const data = await res.json();
       setImageUrls(data);
     } catch (error) {
@@ -46,7 +44,7 @@ export default function ContentRedistribution() {
 
   const uploadImage = async (base64EncodedImage) => {
     try {
-      await fetch("https://hok-studio-backend.herokuapp.com/api/upload", {
+      await fetch("/api/upload", {
         method: "POST",
         body: JSON.stringify({ data: base64EncodedImage }),
         headers: { "Content-type": "application/json" },
