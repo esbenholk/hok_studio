@@ -130,8 +130,6 @@ function Scene(props) {
   const [meshRef, ReflectorMaterial, passes] = useReflector();
   usePostprocessing(passes);
 
-  console.log("group", groupRef);
-
   return (
     <group position-z={-5}>
       <group ref={groupRef}>

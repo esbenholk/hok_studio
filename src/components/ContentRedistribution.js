@@ -12,7 +12,6 @@ export default function ContentRedistribution() {
     try {
       const res = await fetch("/api/getallimages");
       const data = await res.json();
-      console.log(data);
       setImageUrls(data);
     } catch (error) {
       console.error(error);
