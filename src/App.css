@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
+@import url("https://fonts.googleapis.com/css2?family=Pathway+Gothic+One&display=swap");
 
 :root {
   /* Set neon color */
@@ -7,7 +7,6 @@
 }
 
 body {
-  font-family: "Exo 2", sans-serif;
   background: #000;
   min-height: 100vh;
   z-index: -2;
@@ -15,6 +14,11 @@ body {
 
 a {
   text-decoration: none;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
 
 .content-container {
@@ -56,13 +60,39 @@ nav {
 .teaser-image {
   width: 420px;
 }
-.headline-container {
-  width: auto;
-  margin-bottom: 23px;
-  max-width: 400px;
-}
 
 .standard-button {
+  font-weight: 200;
+  color: black;
+  padding: 5px 10px 5px 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+  text-decoration: none;
+  margin: 7px;
+  font-family: "Pathway Gothic One", sans-serif;
+}
+
+.arrow {
+  position: absolute;
+  right: 0;
+  top: 23px;
+  transform: scaleX(-1);
+  height: 80px;
+}
+
+.standard-button:focus {
+  outline: none;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.custom-file-input {
+  border-bottom: 2px solid black;
+}
+
+.standard-button01 {
   font-size: 23px;
   font-weight: 200;
   font-style: italic;
@@ -74,32 +104,15 @@ nav {
   animation: flicker 1.5s infinite alternate;
   text-decoration: none;
   margin: 7px;
-  overflow: hidden;
 }
 
-.arrow {
-  position: absolute;
-  right: 0;
-  top: 23px;
-  transform: scaleX(-1);
-  height: 80px;
-}
-
-.standard-button::-moz-selection {
+.standard-button01::-moz-selection {
   background-color: var(--neon-border-color);
   color: var(--neon-text-color);
 }
-.standard-button::selection {
+.standard-button01::selection {
   background-color: var(--neon-border-color);
   color: var(--neon-text-color);
-}
-
-.standard-button:focus {
-  outline: none;
-}
-
-.no-padding {
-  padding: 0;
 }
 
 /* Animate neon flicker */

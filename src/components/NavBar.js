@@ -29,9 +29,18 @@ export default function NavBar() {
           <NavLink className="standard-button" to="/skeleton">
             Skeleton
           </NavLink>
+          <NavLink className="standard-button" to="/playground">
+            Playground
+          </NavLink>
+          <NavLink className="standard-button" to="/Content-Redistribution">
+            Content Redistribution
+          </NavLink>
         </div>
       </nav>
-      <div className="fixed-right-top standard-button no-padding">
+      <div
+        className="fixed-right-top standard-button no-padding"
+        style={{ overflow: "hidden" }}
+      >
         <img
           className="tiny"
           src="https://stayvirtual.s3.amazonaws.com/crystals/greencrystal"
