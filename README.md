@@ -1,3 +1,11 @@
+# React App with @React-Three/fiber (and assocaited)
+
+The application is hosted serverlessly on Netlify, with npm build React App, and has a proxy server on Heroku.
+
+To init project in development, clone both repositories and cd into each and run npm install & npm start
+
+The client project has a proxy server cponnected through package.json which is currently the herokuapp address. This needs to be temporarily changed to lovcalhost:3001 if you are working on the server in deployment as well
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
