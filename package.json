@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && echo '/* /index.html 200'",
+    "build": "react-scripts build && echo '/* /index.html 200' | cat >build/_redirects",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -55,7 +55,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "https://hok-studio-backend.herokuapp.com/",
   "devDependencies": {
     "tailwindcss": "^2.1.2"
   }
