@@ -26,7 +26,10 @@ export default function PlaygroundCanvas() {
         background: "radial-gradient(#00ff04, pink, white)",
       }}
     >
-      <Scene />
+      {" "}
+      <Suspense fallback={null}>
+        <Scene />
+      </Suspense>
     </Canvas>
   );
 }
@@ -35,7 +38,7 @@ function Scene() {
   const [cubeCamera, renderTarget] = useRenderTarget();
 
   return (
-    <Suspense fallback={null}>
+    <>
       <Ground texture="tinyvr3.jpg" />
 
       <Physics gravity={[0, 0, 0]}>
@@ -50,6 +53,6 @@ function Scene() {
       />
 
       <ambientLight />
-    </Suspense>
+    </>
   );
 }
