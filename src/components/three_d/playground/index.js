@@ -1,4 +1,4 @@
-import React, { forwardRef, Suspense, useEffect, useMemo, useRef } from "react";
+import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Ground } from "./Ground.js";
 import { Control } from "./Player";
@@ -23,7 +23,7 @@ export default function PlaygroundCanvas() {
         position: "fixed",
         top: "0",
         left: "0",
-        background: "radial-gradient(purple, black, grey)",
+        background: "radial-gradient(#00ff04, pink, white)",
       }}
     >
       <Scene />

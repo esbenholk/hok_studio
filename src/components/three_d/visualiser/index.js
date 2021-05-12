@@ -23,7 +23,7 @@ function AudioVisualiser() {
             position: "fixed",
             top: "0",
             left: "0",
-            background: "radial-gradient(purple, black, grey)",
+            background: "radial-gradient(#00ff04, pink, white)",
           }}
         >
           <pointLight position={[-10, -10, -10]} />

@@ -1,12 +1,7 @@
 import { useTexture } from "@react-three/drei";
 import React, { useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
-import {
-  MeshPhysicalMaterial,
-  DoubleSide,
-  RepeatWrapping,
-  MirroredRepeatWrapping,
-} from "three";
+import { MeshPhysicalMaterial, DoubleSide, RepeatWrapping } from "three";
 
 class ReflectorMaterialImpl extends MeshPhysicalMaterial {
   _flowMapOffset0;

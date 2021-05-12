@@ -5,7 +5,6 @@ import SongPlayer from "./MusicPlayer";
 
 export default function ContentRedistribution() {
   const [imageUrls, setImageUrls] = useState([]);
-  const [fileInput, setFileInput] = useState("");
   const [hasNewImage, setHasNewImage] = useState(true);
   const [previewSource, setPreviewSource] = useState("");
 
@@ -103,7 +102,6 @@ export default function ContentRedistribution() {
               name="file"
               placeholder="Upload an Image"
               onChange={handleFileInputChange}
-              value={fileInput}
               style={{
                 marginTop: "20px",
                 marginBottom: "20px",

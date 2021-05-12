@@ -9,7 +9,6 @@ import { useReflector } from "../functions/use-reflector";
 import usePostprocessing from "../functions/use-postprocessing";
 
 import { TextureLoader } from "three";
-import * as THREE from "three";
 
 softShadows();
 
@@ -36,7 +35,7 @@ export default function ContentRedistributionCanvas(imageUrls) {
           position: "fixed",
           top: "0",
           left: "0",
-          background: "radial-gradient(purple, black, grey)",
+          background: "radial-gradient(#00ff04, pink, white)",
         }}
       >
         <fogExp2 attach="fog" args={[0xbffffd, 0.049]} />
