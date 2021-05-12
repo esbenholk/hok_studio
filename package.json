@@ -55,7 +55,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://hok-studio-backend.herokuapp.com/",
+  "proxy": "https://hok-studio-backend.herokuapp.com",
   "devDependencies": {
     "tailwindcss": "^2.1.2"
   }
