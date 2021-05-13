@@ -53,9 +53,9 @@ const TRANSMISSIONMATERIAL_DEF_PROPS = {
 
 export default function useMaterial(props) {
   const { frontMaterial, backMaterial, transmissionMaterial } = props || {};
-  const _frontMaterial = { ...FRONTMATERIAL_DEF_PROPS, ...frontMaterial };
-  const _backMaterial = { ...BACKMATERIAL_DEF_PROPS, ...backMaterial };
-  const _transmissionMaterial = {
+  let _frontMaterial = { ...FRONTMATERIAL_DEF_PROPS, ...frontMaterial };
+  let _backMaterial = { ...BACKMATERIAL_DEF_PROPS, ...backMaterial };
+  let _transmissionMaterial = {
     ...TRANSMISSIONMATERIAL_DEF_PROPS,
     ...transmissionMaterial,
   };
@@ -133,18 +133,7 @@ export default function useMaterial(props) {
       backFbo,
       lambda3,
     ];
-  }, [
-    ref,
-    size,
-    scene,
-    gl,
-    noise,
-    gloss,
-    camera,
-    _frontMaterial,
-    _backMaterial,
-    _transmissionMaterial,
-  ]);
+  }, [ref, size, scene, gl, noise, gloss, camera]);
 
   return [ref, pipeline];
 }

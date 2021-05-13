@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import React, { Suspense, useEffect, useState } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { Reflector, Text, useTexture, Environment } from "@react-three/drei";
 
 const color = "white";
@@ -11,6 +11,7 @@ function VideoText({ clicked, ...props }) {
       src: "/trailer.mp4",
       crossOrigin: "Anonymous",
       loop: true,
+      muted: true,
     })
   );
   useEffect(() => void (clicked && video.play()), [video, clicked]);
