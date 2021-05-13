@@ -133,7 +133,22 @@ export default function useMaterial(props) {
       backFbo,
       lambda3,
     ];
-  }, [ref, size, scene, gl, noise, gloss, camera]);
+  }, [
+    size.width,
+    size.height,
+    _frontMaterial,
+    _backMaterial,
+    gloss,
+    noise,
+    camera,
+    gl,
+    _transmissionMaterial.transmission,
+    _transmissionMaterial.transmissionIntensity,
+    _transmissionMaterial.distortionIntensity,
+    _transmissionMaterial.fresnel,
+    _transmissionMaterial.fresnelAmplifier,
+    scene,
+  ]);
 
   return [ref, pipeline];
 }
