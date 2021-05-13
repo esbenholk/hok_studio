@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import NavBar from "./components/NavBar.js";
 import "./App.css";
-import Play4UsNow from "./components/Play4UsNow.js";
 
+const Play4UsNow = lazy(() => import("./components/Play4UsNow.js"));
 const Home = lazy(() => import("./components/Home.js"));
 const About = lazy(() => import("./components/About.js"));
 const SinglePost = lazy(() => import("./components/SinglePost.js"));
