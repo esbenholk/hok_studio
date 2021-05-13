@@ -3,7 +3,7 @@ import React, { Suspense, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Reflector, Text, useTexture, Environment } from "@react-three/drei";
 
-const color = "black";
+const color = "white";
 
 function VideoText({ clicked, ...props }) {
   const [video] = useState(() =>
