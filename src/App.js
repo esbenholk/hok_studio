@@ -16,7 +16,7 @@ const Playground = lazy(() => import("./components/Playground.js"));
 const ContentRedistribution = lazy(() =>
   import("./components/ContentRedistribution.js")
 );
-const Play4UsNow = lazy(() => import("./components/Play4UsNow.js"));
+const Play4UsNow = lazy(() => import("./components/Play4.js"));
 
 function App() {
   return (
