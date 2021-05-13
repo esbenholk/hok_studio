@@ -13,7 +13,6 @@ export default function ContentRedistribution() {
       const res = await fetch(
         "https://hok-studio-backend.herokuapp.com/api/getallimages"
       );
-      console.log("response", res);
 
       const data = await res.json();
       setImageUrls(data.images);
@@ -62,9 +61,8 @@ export default function ContentRedistribution() {
 
   return (
     <div className="content-container">
-      {imageUrls.length > 1 && (
-        <ContentRedistributionCanvas imageUrls={imageUrls} />
-      )}
+      <ContentRedistributionCanvas imageUrls={imageUrls} />
+
       <div
         style={{
           position: "fixed",
@@ -132,7 +130,7 @@ export default function ContentRedistribution() {
           }}
         >
           {" "}
-          <SongPlayer audioUrl="https://examples.devmastery.pl/assets/audio/deadfro5h.mp3" />
+          <SongPlayer audioUrl="https://res.cloudinary.com/www-houseofkilling-com/video/upload/v1620900008/sounds/AliveForever_clhtnw.mp3" />
         </div>
       </div>
     </div>
