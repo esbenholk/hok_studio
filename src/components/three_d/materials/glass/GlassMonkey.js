@@ -1,6 +1,6 @@
 import { useGLTF } from "@react-three/drei";
 import React from "react";
-import { useFrame } from "react-three-fiber";
+
 import useTransmissionMaterial from "./use-material";
 import usePostprocessing from "./use-postprocessing";
 

@@ -1,12 +1,12 @@
 import React from "react";
 import { Suspense } from "react";
-import VideoCover from "./three_d/video_cover";
+import Play4UsNowCanvas from "./three_d/play4usnow";
 
-export default function Home() {
+export default function Play4UsNow() {
   return (
     <div className="content-container">
       <Suspense fallback={null}>
-        <VideoCover />
+        <Play4UsNowCanvas />
       </Suspense>
     </div>
   );

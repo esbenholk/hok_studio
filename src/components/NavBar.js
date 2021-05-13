@@ -35,6 +35,9 @@ export default function NavBar() {
           <NavLink className="standard-button" to="/Content-Redistribution">
             Content Redistribution
           </NavLink>
+          <NavLink className="standard-button" to="/play4usnow">
+            Play 4 Us Now
+          </NavLink>
         </div>
       </nav>
       <div
