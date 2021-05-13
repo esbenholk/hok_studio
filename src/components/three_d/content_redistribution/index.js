@@ -4,7 +4,12 @@ import { Canvas, useLoader, useFrame, useThree } from "@react-three/fiber";
 import { Control } from "../playground/Player";
 import { Physics } from "@react-three/cannon";
 
-import GlassMonkey from "../materials/glass/GlassMonkey";
+// import GlassMonkey from "../materials/glass/GlassMonkey";
+// <GlassMonkey position={[-60, 0, 0]} rotation={[1, Math.PI / 2, 0]} />
+
+// <GlassMonkey position={[60, -5, 0]} rotation={[1, Math.PI / 2, 5]} />
+
+// <GlassMonkey position={[0, 1, 20]} rotation={[1, Math.PI / 2, 5]} />
 
 import {
   softShadows,
@@ -216,12 +221,6 @@ export default function ContentRedistributionCanvas(imageUrls) {
           />
 
           <ambientLight intensity={0.3} />
-
-          <GlassMonkey position={[-60, 0, 0]} rotation={[1, Math.PI / 2, 0]} />
-
-          <GlassMonkey position={[60, -5, 0]} rotation={[1, Math.PI / 2, 5]} />
-
-          <GlassMonkey position={[0, 1, 20]} rotation={[1, Math.PI / 2, 5]} />
 
           <Scene props={imageUrls} />
 

@@ -53,12 +53,14 @@ const TRANSMISSIONMATERIAL_DEF_PROPS = {
 
 export default function useMaterial(props) {
   const { frontMaterial, backMaterial, transmissionMaterial } = props || {};
-  let _frontMaterial = { ...FRONTMATERIAL_DEF_PROPS, ...frontMaterial };
-  let _backMaterial = { ...BACKMATERIAL_DEF_PROPS, ...backMaterial };
-  let _transmissionMaterial = {
+  const _frontMaterial = { ...FRONTMATERIAL_DEF_PROPS, ...frontMaterial };
+  const _backMaterial = { ...BACKMATERIAL_DEF_PROPS, ...backMaterial };
+  const _transmissionMaterial = {
     ...TRANSMISSIONMATERIAL_DEF_PROPS,
     ...transmissionMaterial,
   };
+
+  // const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 
   const ref = useRef();
   const { gl, size, camera, scene } = useThree();
