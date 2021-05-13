@@ -14,7 +14,7 @@ import { useEffect, useMemo, useRef } from "react";
 import { vert as vertexShader } from "./transmission-material/vertex.js";
 import { frag as fragmentShader } from "./transmission-material/fragment.js";
 import { useTexture } from "@react-three/drei";
-import { useThree } from "react-three-fiber";
+import { useThree } from "@react-three/fiber";
 
 const renderTargetParams = {
   minFilter: LinearFilter,
