@@ -4,7 +4,6 @@ import { Suspense, lazy } from "react";
 import NavBar from "./components/NavBar.js";
 import "./App.css";
 
-const Play4UsNow = lazy(() => import("./components/Play4UsNow.js"));
 const Home = lazy(() => import("./components/Home.js"));
 const About = lazy(() => import("./components/About.js"));
 const SinglePost = lazy(() => import("./components/SinglePost.js"));
@@ -17,6 +16,7 @@ const Playground = lazy(() => import("./components/Playground.js"));
 const ContentRedistribution = lazy(() =>
   import("./components/ContentRedistribution.js")
 );
+const Play4UsNow = lazy(() => import("./components/Play4UsNow.js"));
 
 function App() {
   return (
